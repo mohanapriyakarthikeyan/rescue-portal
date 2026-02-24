@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Emergency-focused color palette */
+    --background: 210 20% 98%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    /* Primary - Deep Crimson Red for urgency */
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Navy Blue for trust */
+    --secondary: 220 60% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Light gray backgrounds */
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 15% 40%;
+
+    /* Accent - Warm amber for warnings */
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Green for completed rescues */
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber for pending */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+
+    /* Destructive - Red for danger */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 85%;
+    --input: 220 15% 85%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.75rem;
+
+    /* Custom emergency gradients */
+    --gradient-emergency: linear-gradient(135deg, hsl(0, 72%, 51%) 0%, hsl(15, 80%, 45%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(220, 60%, 20%) 0%, hsl(220, 50%, 30%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142, 70%, 45%) 0%, hsl(160, 60%, 40%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(210, 20%, 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 25% 10% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 25% 10% / 0.1), 0 2px 4px -1px hsl(220 25% 10% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(220 25% 10% / 0.1), 0 4px 6px -2px hsl(220 25% 10% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 25% 10% / 0.1), 0 10px 10px -5px hsl(220 25% 10% / 0.04);
+    --shadow-emergency: 0 10px 40px -10px hsl(0 72% 51% / 0.4);
+    --shadow-card: 0 4px 20px -2px hsl(220 25% 10% / 0.08);
+
+    /* Sidebar */
+    --sidebar-background: 220 60% 20%;
+    --sidebar-foreground: 210 20% 94%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 50% 30%;
+    --sidebar-accent-foreground: 210 20% 94%;
+    --sidebar-border: 220 50% 30%;
+    --sidebar-ring: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 20% 94%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 210 20% 94%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 20% 94%;
+
+    --primary: 0 72% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 40% 25%;
+    --secondary-foreground: 210 20% 94%;
+
+    --muted: 220 25% 18%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 38 85% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --success: 142 60% 50%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 0 72% 55%;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 94%;
+    --sidebar-primary: 0 72% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 15%;
+    --sidebar-accent-foreground: 210 20% 94%;
+    --sidebar-border: 220 25% 15%;
+    --sidebar-ring: 0 72% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .emergency-button {
+    @apply bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl text-lg;
+    background: var(--gradient-emergency);
+    box-shadow: var(--shadow-emergency);
+    transition: all 0.2s ease;
+  }
+
+  .emergency-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 45px -10px hsl(0 72% 51% / 0.5);
+  }
+
+  .hero-section {
+    background: var(--gradient-hero);
+  }
+
+  .card-elevated {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply rounded-2xl border border-border/50;
+  }
+
+  .status-pending {
+    @apply bg-warning/20 text-warning border border-warning/30;
+  }
+
+  .status-in-progress {
+    @apply bg-primary/20 text-primary border border-primary/30;
+  }
+
+  .status-rescued {
+    @apply bg-success/20 text-success border border-success/30;
+  }
+
+  .glass-effect {
+    @apply bg-background/80 backdrop-blur-md;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .nav-link:hover {
+    @apply bg-muted;
+  }
+
+  .nav-link.active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Map marker styles */
+  .marker-victim {
+    @apply w-8 h-8 rounded-full bg-primary border-4 border-background shadow-lg;
+  }
+
+  .marker-volunteer {
+    @apply w-8 h-8 rounded-full bg-success border-4 border-background shadow-lg;
+  }
+
+  /* Animation utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-emergency);
+  }
+}
